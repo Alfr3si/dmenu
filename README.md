@@ -1,1 +1,1 @@
-![dmenu](https://raw.githubusersustent.com/Alfr3si/dmenu/main/dmenu.png)
+![dmenu](https://raw.githubusercontent.com/Alfr3si/dmenu/main/dmenu.png)
