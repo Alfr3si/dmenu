@@ -14,13 +14,12 @@ static const char *fonts[] = {
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
 			/*     fg         bg       */
-	[SchemeNorm] = { "#FFF4B7", "#222222" },     /*normal*/
-	[SchemeSel] = { "#FFF4B7", "#444444" },         /*seleccion del dmenu*/
-	[SchemeSelHighlight] = { "#ffffff", "#444444" },  /*comparacion de seleccion*/
-	[SchemeNormHighlight] = { "#ffffff", "#222222" },  /*coincidencias de letras*/
+	[SchemeNorm] = { "#ffffff", "#222222" },     /*normal*/
+	[SchemeSel] = { "#666666", "#C5D3E8" },         /*seleccion del dmenu*/
+	[SchemeSelHighlight] = { "#ffffff", "#C5D3E8" },  /*comparacion de seleccion*/
+	[SchemeNormHighlight] = { "#C5D3E8", "#222222" },  /*coincidencias de letras*/
 	[SchemeOut] = { "#ffffff", "#F52597" },          /*normal*/
 };
-
 static const unsigned int alphas[SchemeLast][2] = {
     [SchemeNorm] = { OPAQUE, alpha }, 
     [SchemeSel] = { OPAQUE, alpha },  
