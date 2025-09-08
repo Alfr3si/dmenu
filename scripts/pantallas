@@ -1,0 +1,51 @@
+
+#! /bin/bash
+# Funciones para gestionar las configuraciones de pantalla
+
+primary_screen(){
+  if xrandr | grep -q "HDMI-1 connected"; then
+    xrandr --output eDP-1 --auto --primary --output HDMI-1 --off
+  elif xrandr | grep -q "DP-1 connected"; then
+    xrandr --output eDP-1 --auto --primary --output DP-1 --off
+  fi
+}
+
+duplicate_screen(){
+  # Se asegura de que ambas pantallas estén configuradas para duplicarse
+  if xrandr | grep -q "HDMI-1 connected"; then
+    xrandr --output eDP-1 --auto --output HDMI-1 --auto --same-as eDP-1
+  elif xrandr | grep -q "DP-1 connected"; then
+    xrandr --output eDp-1 --auto --output DP-1 --auto --same-as eDP-1
+  fi
+}
+
+extended_screen(){
+  if xrandr | grep -q "HDMI-1 connected"; then
+    xrandr --output eDP-1 --auto --output HDMI-1 --auto --left-of eDP-1
+  elif xrandr | grep -q "DP-1 connected"; then
+    xrandr --output eDP-1 --auto --output DP-1 --auto --left-of eDP-1
+  fi
+}
+
+second_screen_only(){ 
+  if xrandr | grep -q "HDMI-1 connected"; then
+    xrandr --output eDP-1 --off --output HDMI-1 --auto
+  elif xrandr | grep -q "DP-1 connected"; then
+    xrandr --output eDP-1 --off --output DP-1 --auto
+  fi
+}
+
+# Opciones para seleccionar la configuración de pantalla
+OPCIONES="Primary screen 󰹑 \nDuplicate screen  \nExtended screen 󰨵 󰹑 \nSecond screen 󱠍 "
+
+# Selecciona la opción usando dmenu
+ELECCION=$(echo -e "$OPCIONES" | dmenu -i )
+
+# Aplica la configuración seleccionada
+case "$ELECCION" in
+        "Primary screen 󰹑 ") primary_screen && notify-send -u low "Screen 󰹑 " "Primary";;
+        "Duplicate screen  ") duplicate_screen && notify-send -u low "Screen  " "Duplicate" ;;
+        "Extended screen 󰨵 󰹑 ") extended_screen && notify-send -u low "Screen 󰨵 󰹑 " "Extended";;
+        "Second screen 󱠍 ") second_screen_only && notify-send -u low "Screen 󰨵 󰹑 " "Second 󱠍 ";;
+        *) echo "No se seleccionó ninguna opción válida." ;;
+esac
