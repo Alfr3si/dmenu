@@ -1,11 +1,12 @@
 #! /bin/bash
 
-eleccion=$(printf "Poweroff \nReboot \nSuspend 󰤄\nLogout " | dmenu -i )
+eleccion=$(printf "Lock \nPoweroff \nReboot \nSuspend 󰤄\nLogout 󰈆" | dmenu -i )
 
 case "$eleccion" in
+	"Lock ") slock ;;
 	"Poweroff ") systemctl poweroff ;;
 	"Reboot ") systemctl reboot ;;
 	"Suspend 󰤄") systemctl suspend ;;
-	"Logout ")  kill -9 -1 ;;
+	"Logout 󰈆")  kill -9 -1 ;;
 	*) exit 1 ;;
 esac
