@@ -1,25 +1,25 @@
 /* See LICENSE file for copyright and license details. */
 /* Default settings; can be overriden by command line. */
 
-static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
-static int centered = 1;                    /* -c option; centers dmenu on screen */
-static int min_width = 600;                    /* minimum width when centered */
-static const float menu_height_ratio = 2.0f;  /* This is the ratio used in the original calculation */
+static int topbar = 1;      /* -b  option; if 0, dmenu appears at bottom     */
+static int centered = 1;    /* -c option; centers dmenu on screen */
+static int min_width = 600; /* minimum width when centered */
+static const float menu_height_ratio =
+    2.0f; /* This is the ratio used in the original calculation */
 /* -fn option overrides fonts[0]; default X11 font or font set */
-static const char *fonts[] = {
-	"JetBrainsMono Nerd Font:style=Bold:size=12"
-};
-static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
+static const char *fonts[] = {"JetBrainsMono Nerd Font:size=13"};
+static const char *prompt =
+    NULL; /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
-	/*     fg         bg       */
-	[SchemeNorm] = { "#DEDCDC", "#222222" },     /*normal*/
-	[SchemeSel] = { "#666666", "#000000" },         /*seleccion del dmenu*/
-	[SchemeSelHighlight] = { "#BDB748", "#000000" },  /*comparacion de seleccion*/
-	[SchemeNormHighlight] = { "#BDB748", "#222222" },  /*coincidencias de letras*/
-	[SchemeOut] = { "#DEDCDC", "#F52597" },          /*normal*/
+    /*     fg         bg       */
+    [SchemeNorm] = {"#DEDCDC", "#222222"},          /*normal*/
+    [SchemeSel] = {"#666666", "#000000"},           /*seleccion del dmenu*/
+    [SchemeSelHighlight] = {"#BDB748", "#000000"},  /*comparacion de seleccion*/
+    [SchemeNormHighlight] = {"#BDB748", "#222222"}, /*coincidencias de letras*/
+    [SchemeOut] = {"#DEDCDC", "#F52597"},           /*normal*/
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
-static unsigned int lines      = 15;
+static unsigned int lines = 15;
 
 /*
  * Characters not considered part of a word while deleting words
